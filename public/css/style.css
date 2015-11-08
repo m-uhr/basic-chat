@@ -15,12 +15,24 @@ body, input {
 }
 
 .chat-window {
-	height: 50%;
+	height: 500px;
+}
+
+.chat-window ul {
+	width: 100%;
+	
+}
+
+.chat-window ul li {
+	display: block;
+	position: relative;
+/* 	bottom: -webkit-calc(-100% + 40px);
+    bottom:calc(-100% + 40px); */
 }
 
 
 
-form.chat-message {
+form {
 	width: 100%;
 }
 
@@ -28,8 +40,8 @@ span.chat-username {
 	width: 10%;
 }
 
-.chat-message input {
-	width: 80%;
+input.chat-message {
+	width: 90%;
 	
 	border: 1px solid #eee;
 	/* outline: 1px solid #eee */

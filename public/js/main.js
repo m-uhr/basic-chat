@@ -3,7 +3,7 @@ var socket = io();
 socket.emit('helloworld', 'Hello server!');
 //$(".chat-window").find("ul").;
 
-$(".chat-message").keydown(function(e){
+$(".chat-message").keydown(function(event){
 	if ( event.which == 13 ) {
 		var msg = $(".chat-message").val();
 

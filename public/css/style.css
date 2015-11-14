@@ -5,8 +5,7 @@ body, input {
 }
 
 .wrapper {
-	margin: auto;
-	vertical-align: middle;
+	position: absolute;
 
 	height: 75%;
 	width: 75%;
@@ -16,6 +15,9 @@ body, input {
 
 .chat-window {
 	height: 500px;
+	position: relative;
+	bottom: 0px;
+	margin: 0 auto;
 }
 
 .chat-window ul {

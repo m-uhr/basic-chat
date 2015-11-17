@@ -8,40 +8,49 @@ body, input {
 	margin: auto;
 	vertical-align: middle;
 
-	height: 75%;
-	width: 75%;
+	height: 100%;
+	width: 100%;
 
 	border: 2px #eee;
 }
 
 .chat-window {
-	height: 500px;
+	padding: 0 5%;
+	margin-top: 5%;
 }
 
-.chat-window ul {
+ul.chat-window-messages {
 	width: 100%;
 	
 }
 
-.chat-window ul li {
+ul.chat-window-messages li {
 	display: block;
 	position: relative;
 /* 	bottom: -webkit-calc(-100% + 40px);
     bottom:calc(-100% + 40px); */
 }
 
+ul.chat-window-messages li span.chat-username {
+	padding-right: 10px;
+}
 
+ul.chat-window-messages li span.chat-message {
+	padding-left: 10px;
+}
 
-form {
+form.own-chat-bar {
 	width: 100%;
+	position: absolute;
+	bottom: 0;
 }
 
-span.chat-username {
-	width: 10%;
+.own-chat-username {
+	width: 5%;
 }
 
-input.chat-message {
-	width: 90%;
+input.own-chat-message {
+	width: 95%;
 	
 	border: 1px solid #eee;
 	/* outline: 1px solid #eee */

@@ -14,16 +14,30 @@ app.get('/', function(req, res) {
 
 
 //Socket.io connection
-io.on('connection', function (socket) {
+io.on('connection', function (socket) 
+{
+
 	console.log('a user connected');
 
-	socket.on('helloworld', function (msg) {
-		console.log('Message from user: ' + msg);
+	socket.emit('newUser', function (data) 
+	{
+		console.log('New user: ' + data);
 	});
+
+
+	socket.on('newMessage', function (data) 
+	{
+		console.log('Message from '+ data.username +': ' + data.message);
+		io.emit('spreadNewMessage', data);
+	});
+
+
 });
 
 
-//Starting server
-http.listen(3000, function() {
-	console.log('Server running on localhost:8000');
+
+var port ='63963';
+//var port = process.env.PORT || '3000';
+http.listen(port, function () {
+    console.log('listening on port ' + port);
 });

@@ -1,30 +1,60 @@
 var socket = io();
 
-socket.emit('helloworld', 'Hello server!');
-//$(".chat-window").find("ul").;
+var windowHeight = $( window ).height();
 
-$(".chat-message").keydown(function(e){
-	if ( event.which == 13 ) {
-		var msg = $(".chat-message").val();
+var ownNickname = prompt("Your nickname:", "Guest");
 
-		console.log("ENTER!");
 
-		socket.emit("sentMessage", msg); //Send to server
+$(".own-chat-message").keydown(function(event)
+{
+	if( event.which == 13 ) 
+	{
 
-		$(".chat-window ul").append( "<li>"+msg+"</li>" ); //Add to chat window
-		$(".chat-message").val(""); //Empty message box
+		var ownMessage = $(".own-chat-message").val();
 
-		//Add scrollbar, if too many messages
-		if( $(".chat-window").height() < $(".chat-window ul").height() )
+		if( ownMessage || ownMessage.length !== 0 )
 		{
-			$(".chat-window").css("overflow-y", "scroll");
+
+			$( ".chat-window-messages" ).append( newMessageHTML(ownNickname, ownMessage) ); //Add to chat window
+			$( ".own-chat-message" ).val( "" ); //Empty message box
+
+			socket.emit( 'newMessage', { username: ownNickname, message: ownMessage}); //Send to server
+
+			//Add scrollbar, if too many messages
+			if( windowHeight - $( ".own-chat-bar" ).height() <= $( ".chat-window .chat-window-messages" ).height() )
+			{
+				$( ".chat-window" ).height( windowHeight - $( ".own-chat-bar" ).height() );
+				$( ".chat-window" ).css( "overflow-y", "scroll" );
+			}
 		}
+		
 	} 
-	else {
+
+	else 
+	{
 		console.log("Writing message...");
 	}
 });
 
 
+socket.on('spreadNewMessage', function (msg) 
+{
+	console.log("asdfasdf:    "+ msg.username +" MESSAGE " + ownNickname);
+	if( msg.username !== ownNickname )
+	{
+		$(".chat-window-messages").append( newMessageHTML(msg.username, msg.message) );
+	}
+		
+});
 
-console.log('Hello world!');
+function newMessageHTML (username, message) 
+{
+	return '<li><span class="chat-username">'+ username +'</span>'
+		+':'
+		+'<span class="chat-message">'+ message + '</span></li>';
+}
+
+
+$(window).resize(function() {
+  //update stuff
+});

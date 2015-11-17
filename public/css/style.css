@@ -5,8 +5,7 @@ body, input {
 }
 
 .wrapper {
-	margin: auto;
-	vertical-align: middle;
+	position: absolute;
 
 	height: 100%;
 	width: 100%;

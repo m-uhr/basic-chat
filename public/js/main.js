@@ -2,8 +2,8 @@ var socket = io();
 
 var windowHeight = $( window ).height();
 
-var ownNickname = prompt("Your nickname:", "Guest");
 
+var ownNickname = prompt("Your nickname:", "Guest");
 
 $(".own-chat-message").keydown(function(event)
 {
@@ -53,6 +53,7 @@ function newMessageHTML (username, message)
 		+':'
 		+'<span class="chat-message">'+ message + '</span></li>';
 }
+
 
 
 $(window).resize(function() {

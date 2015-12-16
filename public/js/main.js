@@ -15,7 +15,7 @@ $(".own-chat-message").keydown(function(event)
 		if( ownMessage || ownMessage.length !== 0 )
 		{
 
-			$( ".chat-window-messages" ).append( newMessageHTML(ownNickname, ownMessage) ); //Add to chat window
+			$( ".chat-window-messages" ).append( newMessageHTML(ownNickname, ownMessage, 'own-message') ); //Add to chat window
 			$( ".own-chat-message" ).val( "" ); //Empty message box
 
 			socket.emit( 'newMessage', { username: ownNickname, message: ownMessage}); //Send to server
@@ -47,10 +47,10 @@ socket.on('spreadNewMessage', function (msg)
 		
 });
 
-function newMessageHTML (username, message) 
+function newMessageHTML (username, message, cssClass='') 
 {
-	return '<li><span class="chat-username">'+ username +'</span>'
-		+':'
+	return '<li class="'+ cssClass +'"><span class="chat-username">'+ username +'</span>'
+		+'>'
 		+'<span class="chat-message">'+ message + '</span></li>';
 }
 

@@ -2,6 +2,8 @@ body, input {
 	color: #eee;
 	background: #000;
 	border: none;
+
+	font-family: Courier New,Courier,Lucida Sans Typewriter,Lucida Typewriter,monospace;
 }
 
 .wrapper {
@@ -20,22 +22,34 @@ body, input {
 
 ul.chat-window-messages {
 	width: 100%;
-	
 }
 
 ul.chat-window-messages li {
 	display: block;
 	position: relative;
+
+	padding: 5px 0;
 /* 	bottom: -webkit-calc(-100% + 40px);
     bottom:calc(-100% + 40px); */
+	
+	font-weight: bold;
+    border-bottom: 1px solid #010101;
 }
 
+
 ul.chat-window-messages li span.chat-username {
-	padding-right: 10px;
+	padding-right: 5px;
 }
 
 ul.chat-window-messages li span.chat-message {
 	padding-left: 10px;
+
+	font-weight: normal;
+	color: #fff;
+}
+
+ul.chat-window-messages li.own-message span.chat-message {
+	color: #777;
 }
 
 form.own-chat-bar {
